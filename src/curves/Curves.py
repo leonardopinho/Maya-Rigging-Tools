@@ -19,8 +19,7 @@ def cube():
 def cubeOnBase():
     list = []
     data = splines.cubeOnBase
-    list.append(cmds.curve(p=data, per=False, d=1,
-                           k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
+    list.append(cmds.curve(p=data, per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
     for x in range(len(list) - 1):
         cmds.makeIdentity(list[x + 1], apply=True, t=1, r=1, s=1, n=0)
         shapeNode = cmds.listRelatives(list[x + 1], shapes=True)
@@ -32,8 +31,7 @@ def cubeOnBase():
 def footControl():
     list = []
     data = splines.foot_spline
-    list.append(cmds.curve(p=data, per=True, d=3,
-                           k=[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+    list.append(cmds.curve(p=data, per=True, d=3, k=[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
     for x in range(len(list) - 1):
         cmds.makeIdentity(list[x + 1], apply=True, t=1, r=1, s=1, n=0)
         shapeNode = cmds.listRelatives(list[x + 1], shapes=True)

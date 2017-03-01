@@ -1,12 +1,8 @@
-import sys
 import maya.cmds as cmds
 from functools import partial
 import src.curves.Curves as Curves
 
 reload(Curves)
-
-from src.curves.Curves import cube
-
 
 class UI:
     def __init__(self, path):

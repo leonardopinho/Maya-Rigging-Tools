@@ -1,6 +1,16 @@
-import sys
+try:
 
-path = r'/Users/lpinho/Library/Preferences/Autodesk/maya/2017/scripts/RiggingTools'
+    import inspect
+    import sys
+    import os
+
+    filename = inspect.getframeinfo(inspect.currentframe()).filename
+    path = os.path.dirname(os.path.abspath(filename))
+
+    print(path)
+
+except Exception as e:
+    print(e)
 
 if path not in sys.path:
     sys.path.append(path)
