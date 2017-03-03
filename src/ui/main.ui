@@ -70,7 +70,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_Freeze">
+   <widget class="QPushButton" name="bt_freeze">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -213,7 +213,7 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_pivot_2">
+   <widget class="QPushButton" name="bt_rename">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -223,7 +223,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Pivot</string>
+     <string>Rename</string>
     </property>
    </widget>
    <widget class="Line" name="line_5">
@@ -265,7 +265,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="bt_set_driven_2">
+   <widget class="QPushButton" name="bt_anim_graph">
     <property name="geometry">
      <rect>
       <x>290</x>
@@ -275,7 +275,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Set Driven</string>
+     <string>Graph editor</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -325,7 +325,7 @@
        <property name="minimumSize">
         <size>
          <width>200</width>
-         <height>26</height>
+         <height>35</height>
         </size>
        </property>
        <property name="layoutDirection">
@@ -353,7 +353,7 @@
        <property name="minimumSize">
         <size>
          <width>110</width>
-         <height>0</height>
+         <height>35</height>
         </size>
        </property>
        <property name="text">
@@ -379,27 +379,25 @@
      <number>1</number>
     </property>
    </widget>
-   <zorder>bt_history</zorder>
-   <zorder>bt_Freeze</zorder>
-   <zorder>bt_reset</zorder>
-   <zorder>bt_pivot</zorder>
-   <zorder>line_3</zorder>
-   <zorder>label</zorder>
-   <zorder>bt_component</zorder>
-   <zorder>bt_set_driven</zorder>
-   <zorder>bt_node</zorder>
-   <zorder>bt_outliner</zorder>
-   <zorder>marca</zorder>
-   <zorder>bt_pivot_2</zorder>
-   <zorder>line_5</zorder>
-   <zorder>label_2</zorder>
-   <zorder>line_6</zorder>
-   <zorder>bt_set_driven_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>line_7</zorder>
-   <zorder>horizontalLayoutWidget</zorder>
-   <zorder>curves</zorder>
-   <zorder>curves</zorder>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>660</y>
+      <width>341</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="bt_close">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
