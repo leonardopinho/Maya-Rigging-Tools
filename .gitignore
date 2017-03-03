@@ -1,5 +1,5 @@
 *.py[cod]
 *$py.class
 .DS_Store
-*.pyc
+.pyc
 /.DS_Store
