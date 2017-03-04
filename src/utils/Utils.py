@@ -1,9 +1,10 @@
 import socket
-import urllib
-import re
 
 
 def renameListOfNames(list, new_name, prefix=None, sufix=None, pattern=None):
+    if list.__len__() == 0:
+        raise Exception('The list can not be empty')
+
     if new_name == None or new_name == '':
         raise Exception('A new valid name is required.')
 
@@ -36,22 +37,3 @@ def renameListOfNames(list, new_name, prefix=None, sufix=None, pattern=None):
 def getHostname():
     hostname = socket.gethostname()
     return hostname
-
-
-def getLocalIp():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(("8.8.8.8", 80))
-    lip = s.getsockname()[0]
-    return lip
-
-
-def getPublicIp():
-    f = urllib.urlopen("http://www.canyouseeme.org/")
-    html_doc = f.read()
-    f.close()
-
-    m = re.search(
-        '(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)',
-        html_doc)
-    pip = m.group(0)
-    return pip
