@@ -35,7 +35,7 @@
    <enum>Qt::TabFocus</enum>
   </property>
   <property name="windowTitle">
-   <string>Rigging Tools </string>
+   <string>Rigging Tools v1.0 </string>
   </property>
   <property name="statusTip">
    <string/>
@@ -51,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>191</y>
+      <y>194</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -74,7 +74,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>191</y>
+      <y>194</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -97,7 +97,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>191</y>
+      <y>194</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -120,7 +120,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>191</y>
+      <y>194</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -133,7 +133,7 @@
     <property name="geometry">
      <rect>
       <x>71</x>
-      <y>91</y>
+      <y>94</y>
       <width>281</width>
       <height>30</height>
      </rect>
@@ -146,7 +146,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>164</y>
+      <y>167</y>
       <width>71</width>
       <height>21</height>
      </rect>
@@ -159,7 +159,7 @@
     <property name="geometry">
      <rect>
       <x>150</x>
-      <y>291</y>
+      <y>288</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -172,7 +172,7 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>291</y>
+      <y>288</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -185,7 +185,7 @@
     <property name="geometry">
      <rect>
       <x>80</x>
-      <y>291</y>
+      <y>288</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -198,7 +198,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>291</y>
+      <y>288</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -207,7 +207,7 @@
      <string>Outiliner</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="marca">
+   <widget class="QPushButton" name="bt_about">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -237,7 +237,7 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>191</y>
+      <y>194</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -250,7 +250,7 @@
     <property name="geometry">
      <rect>
       <x>70</x>
-      <y>161</y>
+      <y>164</y>
       <width>281</width>
       <height>30</height>
      </rect>
@@ -289,7 +289,7 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>291</y>
+      <y>288</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -298,38 +298,12 @@
      <string>Graph editor</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>9</x>
-      <y>364</y>
-      <width>71</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Tools:</string>
-    </property>
-   </widget>
-   <widget class="Line" name="line_7">
-    <property name="geometry">
-     <rect>
-      <x>69</x>
-      <y>360</y>
-      <width>281</width>
-      <height>30</height>
-     </rect>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>339</width>
+      <x>-6</x>
+      <y>123</y>
+      <width>371</width>
       <height>43</height>
      </rect>
     </property>
@@ -387,7 +361,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>94</y>
+      <y>97</y>
       <width>161</width>
       <height>21</height>
      </rect>
@@ -417,6 +391,149 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>351</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tools:</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_8">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>347</y>
+      <width>281</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_paint_weight">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>377</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>paint weight</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_constrains">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>377</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Constrains</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_ik">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>377</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ik handle</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_joints">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>377</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Create joints</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_locator">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>377</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>create locator</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_zero_alt_joint">
+    <property name="geometry">
+     <rect>
+      <x>80</x>
+      <y>589</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zero alt joints</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_9">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>559</y>
+      <width>301</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="bt_zero_alt_grp">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>589</y>
+      <width>61</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Zero alt GRP</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>563</y>
+      <width>71</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Utils:</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

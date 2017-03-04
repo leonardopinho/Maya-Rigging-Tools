@@ -1,13 +1,14 @@
 import maya.cmds as cmds
 from functools import partial
 import src.curves.Curves as Curves
-
-reload(Curves)
+import src.constants.Constants as Constants
+import webbrowser
 
 
 class UI:
+    __windowName = 'MainWindow'
+
     def __init__(self, path):
-        self.__windowName = 'MainWindow'
         self.__path = path
         self.__current_menu_item = None
 
@@ -18,6 +19,7 @@ class UI:
         dialog = cmds.loadUI(f=self.__path + '/src/ui/main.ui')
 
         # buttons
+        cmds.button('bt_about', label='About us', edit=1, command=partial(self.credits))
         cmds.button('bt_add', label='Add', edit=1, command=partial(self.addCurve))
         cmds.button('bt_history', edit=1, command=partial(self.clearHistory, self))
         cmds.button('bt_freeze', edit=1, command=partial(self.freezeTransformation, self))
@@ -33,7 +35,7 @@ class UI:
 
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
-        cmds.menuItem(p='curves_combobox', label=' --------- select type ---------- ')
+        cmds.menuItem(p='curves_combobox', label='Select type')
         cmds.menuItem(p='curves_combobox', label='Cube (center pivot)')
         cmds.menuItem(p='curves_combobox', label='Cube (base pivot)')
         cmds.menuItem(p='curves_combobox', label='Move control')
@@ -46,6 +48,9 @@ class UI:
 
     def closeWindow(self, *pArgs):
         cmds.deleteUI(self.__windowName, window=True)
+
+    def credits(self, *pArgs):
+        webbrowser.open(Constants.getCreditsUrl())
 
     def clearHistory(self, *pArgs):
         print('clear history')
