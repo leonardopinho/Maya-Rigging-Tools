@@ -1,6 +1,6 @@
 """
     Rigging Tools
-    Version: 0.1
+    Version: 1.0
     Author: Leonardo Pinho
     Email: contato@leonardopinho.com
 """
