@@ -1,7 +1,0 @@
-*.py[cod]
-*$py.class
-.DS_Store
-.pyc
-.idea/
-/.idea/
-/.gitignore
