@@ -6,15 +6,16 @@ import webbrowser
 
 
 class UI:
-    __windowName = 'MainWindow'
+    __path = None
+    __current_menu_item = None
+    __main_window = 'MainWindow'
 
     def __init__(self, path):
         self.__path = path
-        self.__current_menu_item = None
 
     def getWindow(self):
-        if cmds.window(self.__windowName, exists=True):
-            cmds.deleteUI(self.__windowName, window=True)
+        if cmds.window(self.__main_window, exists=True):
+            cmds.deleteUI(self.__main_window, window=True)
 
         dialog = cmds.loadUI(f=self.__path + '/src/ui/main.ui')
 
@@ -42,22 +43,26 @@ class UI:
         cmds.menuItem(p='curves_combobox', label='Foot control')
 
         cmds.showWindow(dialog)
+
+        # window position
         cmds.window(dialog, edit=True, tlc=(150, 690))
 
     def changeMenuItem(self, item):
         self.__current_menu_item = item
 
     def closeWindow(self, *pArgs):
-        cmds.deleteUI(self.__windowName, window=True)
+        cmds.deleteUI(self.__main_window, window=True)
 
     def credits(self, *pArgs):
         webbrowser.open(Constants.getCreditsUrl())
 
     def clearHistory(self, *pArgs):
-        print('clear history')
+        selection = cmds.ls(sl=1)
+        for obj in selection:
+            cmds.delete(obj, ch=1)
 
     def freezeTransformation(self, *pArgs):
-        print('freezeTransformation')
+        cmds.makeIdentity(apply=True, t=1, r=1, s=1, n=0)
 
     def resetTransformation(self, *pArgs):
         print('resetTransformation')

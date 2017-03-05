@@ -2,8 +2,8 @@ import unittest
 import src.constants.Constants as Constants
 import src.utils.Utils as Utils
 
-class RiggingToolsTest(unittest.TestCase):
 
+class UtilsTest(unittest.TestCase):
     def testRenameListOfObject(self):
         list = ['obj1', 'obj2', 'obj3']
         new_name = 'cube'
@@ -28,9 +28,11 @@ class RiggingToolsTest(unittest.TestCase):
         self.assertEquals('L_cube_001_Mesh', new_list[0])
 
 
+class ConstantsTest(unittest.TestCase):
     def testConstantUrl(self):
         url = Constants.getCreditsUrl()
         self.assertEquals(url.split('/')[2], 'www.leonardopinho.com')
+
 
 if __name__ == '__main__':
     unittest.main()
