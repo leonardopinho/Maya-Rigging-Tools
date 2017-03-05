@@ -224,12 +224,12 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../../../../../../../../imgs/banner.jpg</normaloff>../../../../../../../../imgs/banner.jpg</iconset>
+      <normaloff>icons/banner.png</normaloff>icons/banner.png</iconset>
     </property>
     <property name="iconSize">
      <size>
-      <width>216</width>
-      <height>100</height>
+      <width>341</width>
+      <height>81</height>
      </size>
     </property>
    </widget>
@@ -542,7 +542,7 @@
      <x>0</x>
      <y>0</y>
      <width>363</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

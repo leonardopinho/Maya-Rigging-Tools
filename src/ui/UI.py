@@ -19,7 +19,7 @@ class UI:
         dialog = cmds.loadUI(f=self.__path + '/src/ui/main.ui')
 
         # buttons
-        cmds.button('bt_about', label='About us', edit=1, command=partial(self.credits))
+        cmds.button('bt_about', edit=1, command=partial(self.credits))
         cmds.button('bt_add', label='Add', edit=1, command=partial(self.addCurve))
         cmds.button('bt_history', edit=1, command=partial(self.clearHistory, self))
         cmds.button('bt_freeze', edit=1, command=partial(self.freezeTransformation, self))
@@ -42,6 +42,7 @@ class UI:
         cmds.menuItem(p='curves_combobox', label='Foot control')
 
         cmds.showWindow(dialog)
+        cmds.window(dialog, edit=True, tlc=(150, 690))
 
     def changeMenuItem(self, item):
         self.__current_menu_item = item
