@@ -37,10 +37,10 @@ class UI:
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
         cmds.menuItem(p='curves_combobox', label='Select type')
-        cmds.menuItem(p='curves_combobox', label='Cube (center pivot)')
-        cmds.menuItem(p='curves_combobox', label='Cube (base pivot)')
-        cmds.menuItem(p='curves_combobox', label='Move control')
-        cmds.menuItem(p='curves_combobox', label='Foot control')
+        cmds.menuItem(p='curves_combobox', label=Constants.CUBE_CENTER_PIVOT)
+        cmds.menuItem(p='curves_combobox', label=Constants.CUBE_BASE_PIVOT)
+        cmds.menuItem(p='curves_combobox', label=Constants.MOVE_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Constants.FOOT_CONTROL)
 
         cmds.showWindow(dialog)
 
@@ -90,11 +90,11 @@ class UI:
 
     def addCurve(self, args):
         if self.__current_menu_item is not None:
-            if self.__current_menu_item == 'Cube (center pivot)':
+            if self.__current_menu_item == Constants.CUBE_CENTER_PIVOT:
                 Curves.cube()
-            elif self.__current_menu_item == 'Cube (base pivot)':
+            elif self.__current_menu_item == Constants.CUBE_BASE_PIVOT:
                 Curves.cubeOnBase()
-            elif self.__current_menu_item == 'Move control':
+            elif self.__current_menu_item == Constants.MOVE_CONTROL:
                 Curves.moveControl()
-            elif self.__current_menu_item == 'Foot control':
+            elif self.__current_menu_item == Constants.FOOT_CONTROL:
                 Curves.footControl()
