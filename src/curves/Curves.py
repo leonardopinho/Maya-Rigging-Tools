@@ -1,28 +1,26 @@
 import splinesList as splines
 import maya.cmds as cmds
 
-reload(splines)
-
 
 def cube():
     list = []
     data = splines.cube
     list.append(cmds.curve(p=data, per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
-    merge(list)
+    mergeSpline(list)
 
 
 def cubeOnBase():
     list = []
     data = splines.cubeOnBase
     list.append(cmds.curve(p=data, per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
-    merge(list)
+    mergeSpline(list)
 
 
 def footControl():
     list = []
     data = splines.foot_spline
     list.append(cmds.curve(p=data, per=True, d=3, k=[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
-    merge(list)
+    mergeSpline(list)
 
 
 def moveControl():
@@ -36,9 +34,10 @@ def moveControl():
     list.append(cmds.curve(p=splines.move_spline[6], per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6]))
     list.append(cmds.curve(p=splines.move_spline[7], per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6]))
     list.append(cmds.curve(p=splines.move_spline[8], per=False, d=1, k=[0, 1]))
-    merge(list)
+    mergeSpline(list)
 
-def merge(list):
+
+def mergeSpline(list):
     for x in range(len(list) - 1):
         cmds.makeIdentity(list[x + 1], apply=True, t=1, r=1, s=1, n=0)
         shapeNode = cmds.listRelatives(list[x + 1], shapes=True)
