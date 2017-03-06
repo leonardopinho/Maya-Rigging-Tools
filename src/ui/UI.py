@@ -4,6 +4,8 @@ import src.curves.Curves as Curves
 import src.constants.Constants as Constants
 import webbrowser
 
+reload(Curves)
+reload(Constants)
 
 class UI:
     __path = None
@@ -37,10 +39,10 @@ class UI:
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
         cmds.menuItem(p='curves_combobox', label='Select type')
-        cmds.menuItem(p='curves_combobox', label=Constants.CUBE_CENTER_PIVOT)
-        cmds.menuItem(p='curves_combobox', label=Constants.CUBE_BASE_PIVOT)
-        cmds.menuItem(p='curves_combobox', label=Constants.MOVE_CONTROL)
-        cmds.menuItem(p='curves_combobox', label=Constants.FOOT_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Curves.CUBE_CENTER_PIVOT)
+        cmds.menuItem(p='curves_combobox', label=Curves.CUBE_BASE_PIVOT)
+        cmds.menuItem(p='curves_combobox', label=Curves.MOVE_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Curves.FOOT_CONTROL)
 
         cmds.showWindow(dialog)
 
@@ -90,11 +92,11 @@ class UI:
 
     def addCurve(self, args):
         if self.__current_menu_item is not None:
-            if self.__current_menu_item == Constants.CUBE_CENTER_PIVOT:
+            if self.__current_menu_item == Curves.CUBE_CENTER_PIVOT:
                 Curves.cube()
-            elif self.__current_menu_item == Constants.CUBE_BASE_PIVOT:
+            elif self.__current_menu_item == Curves.CUBE_BASE_PIVOT:
                 Curves.cubeOnBase()
-            elif self.__current_menu_item == Constants.MOVE_CONTROL:
+            elif self.__current_menu_item == Curves.MOVE_CONTROL:
                 Curves.moveControl()
-            elif self.__current_menu_item == Constants.FOOT_CONTROL:
+            elif self.__current_menu_item == Curves.FOOT_CONTROL:
                 Curves.footControl()
