@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import socket
 
 
@@ -38,8 +39,13 @@ def renameListOfNames(list, new_name, prefix=None, sufix=None, pattern=None):
     return new_list
 
 
-def renameListByChangingWord(list, old_word, new_word):
-    pass
+def renameListByChangingWord(list, search_term, new_word):
+    new_list = []
+    for item in list:
+        if(search_term in item):
+            new_list.append(item.replace(search_term, new_word))
+
+    return new_list
 
 
 def getHostname():

@@ -47,7 +47,7 @@ class UI:
         cmds.showWindow(dialog)
 
         # window position
-        cmds.window(dialog, edit=True, tlc=(150, 690))
+        cmds.window(dialog, edit=True, tlc=(30, 1000))
 
     def changeMenuItem(self, item):
         self.__current_menu_item = item

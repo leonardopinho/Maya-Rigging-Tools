@@ -27,6 +27,13 @@ class UtilsTest(unittest.TestCase):
         new_list = Utils.renameListOfNames(list, new_name, prefix, sufix, '###')
         self.assertEquals('L_cube_001_Mesh', new_list[0])
 
+    def testRenameListByChangingWord(self):
+        list = ['L_Middle_1_Jnt', 'L_Middle_2_Jnt', 'L_Middle_3_Jnt']
+        search_term = 'Middle'
+        new_name = 'Ring'
+        new_list = Utils.renameListByChangingWord(list, search_term, new_name)
+        self.assertEquals('L_Ring_1_Jnt', new_list[0])
+
 
 class ConstantsTest(unittest.TestCase):
     def testConstantUrl(self):
