@@ -17,10 +17,7 @@ if path not in sys.path:
 
 import src.ui.UI as UI
 
-reload(UI)
-
 from src.ui.UI import UI
-
 
 
 def init():
