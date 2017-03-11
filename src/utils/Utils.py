@@ -1,8 +1,12 @@
 #!/usr/bin/python
-import socket
+try:
+    import socket
+    import maya.OpenMaya as om
+except Exception as e:
+    print(e)
 
 
-def renameListOfNames(list, new_name, prefix=None, sufix=None, pattern=None):
+def renameListOfNames(list, new_name, prefix=None, suffix=None, pattern=None):
     # list validation
     if len(list) == 0:
         raise Exception('The list can not be empty')
@@ -30,9 +34,9 @@ def renameListOfNames(list, new_name, prefix=None, sufix=None, pattern=None):
 
         result = result + new_name
 
-        # add sufix
-        if sufix != None and sufix != '':
-            result = result + idx + sufix
+        # add suffix
+        if suffix != None and suffix != '':
+            result = result + idx + suffix
 
         new_list.append(result)
 
@@ -42,7 +46,7 @@ def renameListOfNames(list, new_name, prefix=None, sufix=None, pattern=None):
 def renameListByChangingWord(list, search_term, new_word):
     new_list = []
     for item in list:
-        if(search_term in item):
+        if (search_term in item):
             new_list.append(item.replace(search_term, new_word))
 
     return new_list
@@ -51,3 +55,18 @@ def renameListByChangingWord(list, search_term, new_word):
 def getHostname():
     hostname = socket.gethostname()
     return hostname
+
+
+def log(msg):
+    if type(msg) == str:
+        om.MGlobal.displayInfo(msg)
+
+
+def warn(msg):
+    if type(msg) == str:
+        om.MGlobal.displayWarning(msg)
+
+
+def error(msg):
+    if type(msg) == str:
+        om.MGlobal.displayError(msg)

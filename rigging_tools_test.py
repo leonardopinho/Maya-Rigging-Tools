@@ -8,23 +8,23 @@ class UtilsTest(unittest.TestCase):
         list = ['obj1', 'obj2', 'obj3']
         new_name = 'cube'
         prefix = 'L_'
-        sufix = '_Mesh'
-        new_list = Utils.renameListOfNames(list, new_name, prefix, sufix)
+        suffix = '_Mesh'
+        new_list = Utils.renameListOfNames(list, new_name, prefix, suffix)
         self.assertEquals('L_cube_1_Mesh', new_list[0])
 
     def testRenameByPattern(self):
         list = ['obj1', 'obj2', 'obj3']
         new_name = 'cube'
         prefix = 'L_'
-        sufix = '_Mesh'
+        suffix = '_Mesh'
 
-        new_list = Utils.renameListOfNames(list, new_name, prefix, sufix, '#')
+        new_list = Utils.renameListOfNames(list, new_name, prefix, suffix, '#')
         self.assertEquals('L_cube_1_Mesh', new_list[0])
 
-        new_list = Utils.renameListOfNames(list, new_name, prefix, sufix, '##')
+        new_list = Utils.renameListOfNames(list, new_name, prefix, suffix, '##')
         self.assertEquals('L_cube_01_Mesh', new_list[0])
 
-        new_list = Utils.renameListOfNames(list, new_name, prefix, sufix, '###')
+        new_list = Utils.renameListOfNames(list, new_name, prefix, suffix, '###')
         self.assertEquals('L_cube_001_Mesh', new_list[0])
 
     def testRenameListByChangingWord(self):

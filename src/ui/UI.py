@@ -8,6 +8,7 @@ import webbrowser
 
 reload(Rename)
 
+
 class UI:
     __path = None
     __current_menu_item = None
@@ -75,11 +76,9 @@ class UI:
         print('centerPivot')
 
     def renameFiles(self, *pArgs):
-        list = cmds.ls(selection=True)
-        if len(list) > 0:
-            Rename.getWindow(self.__path, list)
-        else:
-            cmds.warning('Select at least one item')
+        # rename ui
+        Rename.getWindow(self.__path)
+
 
     def openOutliner(self, *pArgs):
         print('outliner')
