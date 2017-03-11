@@ -4,6 +4,8 @@ import src.constants.Constants as Constants
 
 __current_action = Constants.RENAME_ACTION
 __rename_window = 'RenameWindow'
+__pattern = None
+
 
 def getWindow(path):
     if cmds.window(__rename_window, exists=True):
@@ -16,13 +18,20 @@ def getWindow(path):
 
     # buttons
     cmds.button('renameBt', edit=True, command=renameAll)
+    cmds.button('closeBt', edit=True, command=closeRenameUI)
+
+    # combobox
+    cmds.optionMenu('patternCb', edit=1, changeCommand=changeMenuItem)
+    cmds.menuItem(p='patternCb', label='#')
+    cmds.menuItem(p='patternCb', label='##')
+    cmds.menuItem(p='patternCb', label='###')
+    cmds.menuItem(p='patternCb', label='####')
 
     cmds.showWindow(rename_dialog)
     cmds.window(rename_dialog, edit=True, tlc=(30, 735))
 
 
 def changeAction(args):
-
     global __current_action
 
     if (cmds.radioButton('renameRb', q=True, sl=True)):
@@ -31,27 +40,38 @@ def changeAction(args):
         __current_action = Constants.REPLACE_ACTION
 
 
-def renameAll(args):
+def changeMenuItem(param):
+    global __pattern
+    __pattern = param
 
-    global __current_action
+
+def renameAll(args):
+    global __current_action, __pattern
     list = cmds.ls(selection=True)
 
     if len(list) == 0:
-
         Utils.warn('Select at least one item')
-
     else:
-
         if __current_action == Constants.RENAME_ACTION:
-            search_term = 'joint'
-            new_word = 'Pink'
 
-            new_list = Utils.renameListOfNames(list, new_word, 'L_', '_Jnt', '###')
+            prefix = cmds.textField('prefixTf', query=True, text=True)
+            suffix = cmds.textField('suffixTf', query=True, text=True)
+            new_word = cmds.textField('newNameTf', query=True, text=True)
+            end_jnt = cmds.checkBox('endCb', q=1, v=1)
+
+            new_list = Utils.renameListOfNames(list, new_word, prefix, suffix, __pattern, end_jnt)
+
             for i, item in enumerate(list):
                 cmds.rename(item, str(new_list[i]))
 
-        # list = cmds.ls(selection=True)
-        # new_list = Utils.renameListByChangingWord(list, search_term, new_word)
-        # for i, item in enumerate(list):
-        #     cmds.rename(item, str(new_list[i]))
-        __list = None
+            cmds.select(cl=True)
+
+        elif __current_action == Constants.REPLACE_ACTION:
+            list = cmds.ls(selection=True)
+            new_list = Utils.renameListByChangingWord(list, search_term, new_word)
+            for i, item in enumerate(list):
+                cmds.rename(item, str(new_list[i]))
+
+
+def closeRenameUI(args):
+    cmds.deleteUI(__rename_window, window=True)

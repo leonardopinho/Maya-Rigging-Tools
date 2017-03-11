@@ -6,7 +6,7 @@ except Exception as e:
     print(e)
 
 
-def renameListOfNames(list, new_name, prefix=None, suffix=None, pattern=None):
+def renameListOfNames(list, new_name, prefix=None, suffix=None, pattern=None, end_jnt=False):
     # list validation
     if len(list) == 0:
         raise Exception('The list can not be empty')
@@ -37,6 +37,10 @@ def renameListOfNames(list, new_name, prefix=None, suffix=None, pattern=None):
         # add suffix
         if suffix != None and suffix != '':
             result = result + idx + suffix
+
+        # end joint
+        if end_jnt and i == (len(list) - 1):
+            result = result.replace((idx + suffix), '_JEnd')
 
         new_list.append(result)
 

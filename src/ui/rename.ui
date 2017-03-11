@@ -57,7 +57,7 @@
     <property name="geometry">
      <rect>
       <x>106</x>
-      <y>130</y>
+      <y>140</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -70,7 +70,7 @@
     <property name="geometry">
      <rect>
       <x>106</x>
-      <y>160</y>
+      <y>115</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -86,7 +86,7 @@
     <property name="geometry">
      <rect>
       <x>106</x>
-      <y>189</y>
+      <y>164</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -96,7 +96,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>76</y>
+      <y>68</y>
       <width>231</width>
       <height>20</height>
      </rect>
@@ -136,12 +136,12 @@
      <rect>
       <x>11</x>
       <y>221</y>
-      <width>111</width>
+      <width>121</width>
       <height>17</height>
      </rect>
     </property>
     <property name="text">
-     <string>Set end join?</string>
+     <string>create end join?</string>
     </property>
    </widget>
    <widget class="QPushButton" name="closeBt">
@@ -161,7 +161,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>239</y>
+      <y>240</y>
       <width>231</width>
       <height>20</height>
      </rect>
@@ -174,7 +174,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>99</y>
+      <y>89</y>
       <width>100</width>
       <height>20</height>
      </rect>
@@ -214,8 +214,8 @@
    <widget class="QLabel" name="nameLb">
     <property name="geometry">
      <rect>
-      <x>13</x>
-      <y>130</y>
+      <x>11</x>
+      <y>142</y>
       <width>60</width>
       <height>16</height>
      </rect>
@@ -228,7 +228,7 @@
     <property name="geometry">
      <rect>
       <x>12</x>
-      <y>160</y>
+      <y>118</y>
       <width>50</width>
       <height>16</height>
      </rect>
@@ -241,7 +241,7 @@
     <property name="geometry">
      <rect>
       <x>11</x>
-      <y>190</y>
+      <y>168</y>
       <width>50</width>
       <height>16</height>
      </rect>
@@ -321,6 +321,35 @@
      <string>Replace with:</string>
     </property>
    </widget>
+   <widget class="QLabel" name="patternLb">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>195</y>
+      <width>50</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pattern:</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="patternCb">
+    <property name="geometry">
+     <rect>
+      <x>106</x>
+      <y>189</y>
+      <width>131</width>
+      <height>26</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>131</width>
+      <height>0</height>
+     </size>
+    </property>
+   </widget>
    <zorder>line</zorder>
    <zorder>newNameTf</zorder>
    <zorder>prefixTf</zorder>
@@ -340,12 +369,22 @@
    <zorder>findLb</zorder>
    <zorder>replaceTf</zorder>
    <zorder>replaceLb</zorder>
+   <zorder>patternLb</zorder>
+   <zorder>patternCb</zorder>
   </widget>
  </widget>
  <tabstops>
-  <tabstop>newNameTf</tabstop>
+  <tabstop>renameRb</tabstop>
   <tabstop>prefixTf</tabstop>
+  <tabstop>newNameTf</tabstop>
   <tabstop>suffixTf</tabstop>
+  <tabstop>patternCb</tabstop>
+  <tabstop>endCb</tabstop>
+  <tabstop>replaceRb</tabstop>
+  <tabstop>findTf</tabstop>
+  <tabstop>replaceTf</tabstop>
+  <tabstop>renameBt</tabstop>
+  <tabstop>closeBt</tabstop>
  </tabstops>
  <resources/>
  <connections>
@@ -698,6 +737,70 @@
     <hint type="destinationlabel">
      <x>168</x>
      <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>patternCb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>patternCb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>201</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>patternLb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>202</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>patternLb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>202</y>
     </hint>
    </hints>
   </connection>

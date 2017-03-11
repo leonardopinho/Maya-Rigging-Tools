@@ -6,9 +6,6 @@ import src.utils.Utils as Utils
 import src.ui.RenameUI as Rename
 import webbrowser
 
-reload(Rename)
-
-
 class UI:
     __path = None
     __current_menu_item = None
@@ -78,7 +75,6 @@ class UI:
     def renameFiles(self, *pArgs):
         # rename ui
         Rename.getWindow(self.__path)
-
 
     def openOutliner(self, *pArgs):
         print('outliner')

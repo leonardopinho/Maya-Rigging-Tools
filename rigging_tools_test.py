@@ -34,6 +34,15 @@ class UtilsTest(unittest.TestCase):
         new_list = Utils.renameListByChangingWord(list, search_term, new_name)
         self.assertEquals('L_Ring_1_Jnt', new_list[0])
 
+    def testCreateEndJointName(self):
+        list = ['obj1', 'obj2', 'obj3']
+        new_name = 'cube'
+        prefix = 'L_'
+        suffix = '_Mesh'
+
+        new_list = Utils.renameListOfNames(list, new_name, prefix, suffix, '#', True)
+        self.assertEquals('L_cube_JEnd', new_list[2])
+
 
 class ConstantsTest(unittest.TestCase):
     def testConstantUrl(self):
