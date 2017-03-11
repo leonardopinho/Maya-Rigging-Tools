@@ -22,6 +22,7 @@ reload(UI)
 from src.ui.UI import UI
 
 
+
 def init():
     ui = UI(path)
     ui.getWindow()

@@ -2,15 +2,17 @@ import maya.cmds as cmds
 from functools import partial
 import src.curves.Curves as Curves
 import src.constants.Constants as Constants
+import src.utils.Utils as Utils
+import src.ui.RenameUI as Rename
 import webbrowser
 
-reload(Curves)
-reload(Constants)
+reload(Rename)
 
 class UI:
     __path = None
     __current_menu_item = None
     __main_window = 'MainWindow'
+    __rename_window = 'RenameWindow'
 
     def __init__(self, path):
         self.__path = path
@@ -73,7 +75,11 @@ class UI:
         print('centerPivot')
 
     def renameFiles(self, *pArgs):
-        print('renameFiles')
+        list = cmds.ls(selection=True)
+        if len(list) > 0:
+            Rename.getWindow(self.__path, list)
+        else:
+            cmds.warning('Select at least one item')
 
     def openOutliner(self, *pArgs):
         print('outliner')

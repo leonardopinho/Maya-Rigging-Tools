@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>RenameWindow</class>
+ <widget class="QMainWindow" name="RenameWindow">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>251</width>
+    <height>442</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>251</width>
+    <height>442</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>251</width>
+    <height>442</height>
+   </size>
+  </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::DefaultContextMenu</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Rename v1.0</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="animated">
+   <bool>false</bool>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="newNameTf">
+    <property name="geometry">
+     <rect>
+      <x>106</x>
+      <y>130</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="prefixTf">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>106</x>
+      <y>160</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="frame">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="suffixTf">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>106</x>
+      <y>189</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>76</y>
+      <width>231</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="renameBt">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>368</y>
+      <width>231</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>rename</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>399</y>
+      <width>231</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="endCb">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>221</y>
+      <width>111</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set end join?</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="closeBt">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>416</y>
+      <width>231</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>close</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>239</y>
+      <width>231</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="renameRb">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>99</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rename list</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+    <property name="autoRepeat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="replaceRb">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>259</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Replace</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="nameLb">
+    <property name="geometry">
+     <rect>
+      <x>13</x>
+      <y>130</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Name:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="prefixLb">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>160</y>
+      <width>50</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Prefix:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="sufixLb">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>190</y>
+      <width>50</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Suffix:</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>347</y>
+      <width>231</width>
+      <height>19</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="findTf">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>103</x>
+      <y>290</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="findLb">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>290</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Find what:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="replaceTf">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>103</x>
+      <y>321</y>
+      <width>131</width>
+      <height>20</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="replaceLb">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>321</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Replace with:</string>
+    </property>
+   </widget>
+   <zorder>line</zorder>
+   <zorder>newNameTf</zorder>
+   <zorder>prefixTf</zorder>
+   <zorder>suffixTf</zorder>
+   <zorder>renameBt</zorder>
+   <zorder>line_2</zorder>
+   <zorder>endCb</zorder>
+   <zorder>closeBt</zorder>
+   <zorder>line_3</zorder>
+   <zorder>renameRb</zorder>
+   <zorder>replaceRb</zorder>
+   <zorder>nameLb</zorder>
+   <zorder>prefixLb</zorder>
+   <zorder>sufixLb</zorder>
+   <zorder>line_4</zorder>
+   <zorder>findTf</zorder>
+   <zorder>findLb</zorder>
+   <zorder>replaceTf</zorder>
+   <zorder>replaceLb</zorder>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>newNameTf</tabstop>
+  <tabstop>prefixTf</tabstop>
+  <tabstop>suffixTf</tabstop>
+ </tabstops>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>newNameTf</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>newNameTf</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>prefixTf</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>prefixTf</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>suffixTf</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>suffixTf</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>171</x>
+     <y>198</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>endCb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>51</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>endCb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>51</x>
+     <y>229</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>nameLb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>nameLb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>42</x>
+     <y>137</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>prefixLb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>prefixLb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>36</x>
+     <y>167</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sufixLb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>sufixLb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>197</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>findLb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>55</x>
+     <y>297</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>findLb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>55</x>
+     <y>297</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>findTf</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>findTf</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>replaceLb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>55</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>replaceLb</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>55</x>
+     <y>328</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaceRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>replaceTf</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>renameRb</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>replaceTf</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
