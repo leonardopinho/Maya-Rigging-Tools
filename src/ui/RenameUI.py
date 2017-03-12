@@ -2,6 +2,8 @@ import maya.cmds as cmds
 import src.utils.Utils as Utils
 import src.constants.Constants as Constants
 
+reload(Utils)
+
 __current_action = Constants.RENAME_ACTION
 __rename_window = 'RenameWindow'
 __pattern = None

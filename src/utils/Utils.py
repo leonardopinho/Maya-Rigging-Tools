@@ -7,6 +7,17 @@ except Exception as e:
 
 
 def renameListOfNames(list, new_name, prefix=None, suffix=None, pattern=None, end_jnt=False):
+    """
+    Rename list of items
+    :param list:
+    :param new_name:
+    :param prefix:
+    :param suffix:
+    :param pattern:
+    :param end_jnt:
+    :return list:
+    """
+
     # list validation
     if len(list) == 0:
         raise Exception('The list can not be empty')
@@ -48,6 +59,14 @@ def renameListOfNames(list, new_name, prefix=None, suffix=None, pattern=None, en
 
 
 def renameListByChangingWord(list, search_term, new_word):
+    """
+    Replace list of names with new word
+    :param list:
+    :param search_term:
+    :param new_word:
+    :return list:
+    """
+
     new_list = []
     for item in list:
         if (search_term in item):
@@ -57,6 +76,10 @@ def renameListByChangingWord(list, search_term, new_word):
 
 
 def getHostname():
+    """
+    Return hostname
+    :return list:
+    """
     hostname = socket.gethostname()
     return hostname
 
