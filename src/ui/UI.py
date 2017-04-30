@@ -6,6 +6,8 @@ import src.utils.Utils as Utils
 import src.ui.RenameUI as Rename
 import webbrowser
 
+reload(Curves)
+
 class UI:
     __path = None
     __current_menu_item = None
@@ -33,7 +35,7 @@ class UI:
         cmds.button('bt_node', edit=1, command=partial(self.openNodeEditor, self))
         cmds.button('bt_component', edit=1, command=partial(self.openComponentEditor, self))
         cmds.button('bt_set_driven', edit=1, command=partial(self.openSetDrivenKey, self))
-        cmds.button('bt_anim_graph', edit=1, command=partial(self.openGraphEditor, self))
+        cmds.button('bt_anim_graph', edit=1, command=partial(self.getListOfCvPoints, self))
         cmds.button('bt_close', edit=1, command=partial(self.closeWindow, self))
 
         # combobox
@@ -43,6 +45,7 @@ class UI:
         cmds.menuItem(p='curves_combobox', label=Curves.CUBE_BASE_PIVOT)
         cmds.menuItem(p='curves_combobox', label=Curves.MOVE_CONTROL)
         cmds.menuItem(p='curves_combobox', label=Curves.FOOT_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Curves.SPHERE_CONTROL)
 
         cmds.showWindow(dialog)
 
@@ -91,6 +94,11 @@ class UI:
     def openGraphEditor(self, *pArgs):
         print('openGraphEditor')
 
+    def getListOfCvPoints(self, *pArgs):
+        selecteds_curve = cmds.ls(selection=True)
+        res = Curves.getListOfCvPoints(selecteds_curve[0])
+        print(res)
+
     def addCurve(self, args):
         if self.__current_menu_item is not None:
             if self.__current_menu_item == Curves.CUBE_CENTER_PIVOT:
@@ -101,3 +109,5 @@ class UI:
                 Curves.moveControl()
             elif self.__current_menu_item == Curves.FOOT_CONTROL:
                 Curves.footControl()
+            elif self.__current_menu_item == Curves.SPHERE_CONTROL:
+                Curves.sphere()

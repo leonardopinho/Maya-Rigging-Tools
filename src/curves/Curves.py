@@ -1,31 +1,29 @@
 import splinesList as splines
 import maya.cmds as cmds
 
+reload(splines)
+
 CUBE_CENTER_PIVOT = 'Cube (center pivot)'
 CUBE_BASE_PIVOT = 'Cube (base pivot)'
 MOVE_CONTROL = 'Move control'
 FOOT_CONTROL = 'Foot control'
+SPHERE_CONTROL = 'Sphere control'
+
+
+def sphere():
+    createSpline(splines.sphere, 1)
 
 
 def cube():
-    list = []
-    data = splines.cube
-    list.append(cmds.curve(p=data, per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
-    mergeSpline(list)
+    createSpline(splines.cube, 1)
 
 
 def cubeOnBase():
-    list = []
-    data = splines.cubeOnBase
-    list.append(cmds.curve(p=data, per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]))
-    mergeSpline(list)
+    createSpline(splines.cubeOnBase, 1)
 
 
 def footControl():
-    list = []
-    data = splines.foot_spline
-    list.append(cmds.curve(p=data, per=True, d=3, k=[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
-    mergeSpline(list)
+    createSpline(splines.foot_spline, 3)
 
 
 def moveControl():
@@ -39,6 +37,49 @@ def moveControl():
     list.append(cmds.curve(p=splines.move_spline[6], per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6]))
     list.append(cmds.curve(p=splines.move_spline[7], per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6]))
     list.append(cmds.curve(p=splines.move_spline[8], per=False, d=1, k=[0, 1]))
+    mergeSpline(list)
+
+def getListOfCvPoints(selected_curve):
+    """
+    getListOfCvPoints
+    Return cvs positions (x, y, z)
+    :param selected_curve: name of selected curve
+    :return: list of points for selection
+    """
+    curveCVs = cmds.ls('{0}.cv[:]'.format(selected_curve), fl=True)
+    list = []
+
+    for cv in curveCVs:
+        pos = cmds.pointPosition(cv)
+        list.append(pos)
+
+    return list
+
+
+def createKnotVectorString(cvNum, degree):
+    """
+    @param int cvNum: number of CVs in constructing curve.
+    @param int degree: degree of constructing curve.
+    @return list
+    """
+    if cvNum <= degree:
+        print "warning, number of CVs can't be less than degree + 1"
+        return None
+    tailsSize = degree
+    knotsNum = cvNum + degree - 1
+    knotsArray = [0] * knotsNum
+    for i in range(0, len(knotsArray) - degree + 1):
+        knotsArray[i + degree - 1] = i
+    tailValue = knotsArray[-tailsSize - 1] + 1
+    for i in range(1, tailsSize):
+        knotsArray[-i] = tailValue
+    return knotsArray
+
+
+def createSpline(data, degree):
+    list = []
+    knot = createKnotVectorString(len(data), degree)
+    list.append(cmds.curve(p=data, per=False, d=degree, k=knot))
     mergeSpline(list)
 
 

@@ -78,7 +78,7 @@ def renameListByChangingWord(list, search_term, new_word):
 def getHostname():
     """
     Return hostname
-    :return list:
+    :return str:
     """
     hostname = socket.gethostname()
     return hostname
