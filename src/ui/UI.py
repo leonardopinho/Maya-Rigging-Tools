@@ -81,7 +81,20 @@ class UI:
         Rename.getWindow(self.__path)
 
     def openOutliner(self, *pArgs):
-        print('outliner')
+        # if self.__outliner != None and cmds.window('Outliner', exists=True):
+        #     cmds.deleteUI(self.__outliner, window=True)
+
+        self.__outliner = cmds.window(title='Outliner', widthHeight=(300, 500))
+        cmds.frameLayout(labelVisible=False)
+        panel = cmds.outlinerPanel()
+        outliner = cmds.outlinerPanel(panel, query=True, outlinerEditor=True)
+        cmds.outlinerEditor(outliner, edit=True, mainListConnection='worldList', selectionConnection='modelList',
+                            showShapes=False, showAttributes=False, showConnected=False, showAnimCurvesOnly=False,
+                            autoExpand=False, showDagOnly=True, ignoreDagHierarchy=False, expandConnections=False,
+                            showCompounds=True, showNumericAttrsOnly=False, highlightActive=True,
+                            autoSelectNewObjects=False, doNotSelectNewObjects=False, transmitFilters=False,
+                            showSetMembers=True, setFilter='defaultSetFilter')
+        cmds.showWindow()
 
     def openNodeEditor(self, *pArgs):
         print('openNodeEditor')
