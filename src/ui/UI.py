@@ -1,4 +1,5 @@
 import maya.cmds as cmds
+import maya.mel as mel
 from functools import partial
 import src.curves.Curves as Curves
 import src.constants.Constants as Constants
@@ -6,6 +7,7 @@ import src.utils.Utils as Utils
 import src.ui.RenameUI as Rename
 import webbrowser
 
+reload(Constants)
 reload(Curves)
 
 
@@ -42,16 +44,19 @@ class UI:
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
         cmds.menuItem(p='curves_combobox', label='Select type')
+        cmds.menuItem(p='curves_combobox', label=Constants.SQUARE_CONTROL)
         cmds.menuItem(p='curves_combobox', label=Constants.CUBE_CENTER_PIVOT)
         cmds.menuItem(p='curves_combobox', label=Constants.CUBE_BASE_PIVOT)
         cmds.menuItem(p='curves_combobox', label=Constants.MOVE_CONTROL)
         cmds.menuItem(p='curves_combobox', label=Constants.FOOT_CONTROL)
         cmds.menuItem(p='curves_combobox', label=Constants.SPHERE_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Constants.ARROW_180)
+        #cmds.menuItem(p='curves_combobox', label=Constants.COG)
 
         cmds.showWindow(dialog)
 
         # window position
-        cmds.window(dialog, edit=True, tlc=(30, 1000))
+        cmds.window(dialog, edit=True, tlc=(150, 1200))
 
     def changeMenuItem(self, item):
         self.__current_menu_item = item
@@ -81,29 +86,31 @@ class UI:
         Rename.getWindow(self.__path)
 
     def openOutliner(self, *pArgs):
-        # if self.__outliner != None and cmds.window('Outliner', exists=True):
-        #     cmds.deleteUI(self.__outliner, window=True)
-
-        self.__outliner = cmds.window(title='Outliner', widthHeight=(300, 500))
-        cmds.frameLayout(labelVisible=False)
-        panel = cmds.outlinerPanel()
-        outliner = cmds.outlinerPanel(panel, query=True, outlinerEditor=True)
-        cmds.outlinerEditor(outliner, edit=True, mainListConnection='worldList', selectionConnection='modelList',
-                            showShapes=False, showAttributes=False, showConnected=False, showAnimCurvesOnly=False,
-                            autoExpand=False, showDagOnly=True, ignoreDagHierarchy=False, expandConnections=False,
-                            showCompounds=True, showNumericAttrsOnly=False, highlightActive=True,
-                            autoSelectNewObjects=False, doNotSelectNewObjects=False, transmitFilters=False,
-                            showSetMembers=True, setFilter='defaultSetFilter')
-        cmds.showWindow()
+        try:
+            # Toggle outliner (Maya 2017)
+            mel.eval('ToggleOutliner;')
+        except:
+            # float panel (other Maya version)
+            self.__outliner = cmds.window(title='Outliner', widthHeight=(300, 500))
+            cmds.frameLayout(labelVisible=False)
+            panel = cmds.outlinerPanel()
+            outliner = cmds.outlinerPanel(panel, query=True, outlinerEditor=True)
+            cmds.outlinerEditor(outliner, edit=True, mainListConnection='worldList', selectionConnection='modelList',
+                                showShapes=False, showAttributes=False, showConnected=False, showAnimCurvesOnly=False,
+                                autoExpand=False, showDagOnly=True, ignoreDagHierarchy=False, expandConnections=False,
+                                showCompounds=True, showNumericAttrsOnly=False, highlightActive=True,
+                                autoSelectNewObjects=False, doNotSelectNewObjects=False, transmitFilters=False,
+                                showSetMembers=True, setFilter='defaultSetFilter')
+            cmds.showWindow()
 
     def openNodeEditor(self, *pArgs):
-        print('openNodeEditor')
+        mel.eval('NodeEditorWindow;')
 
     def openComponentEditor(self, *pArgs):
-        print('openComponentEditor')
+        mel.eval('ComponentEditor;')
 
     def openSetDrivenKey(self, *pArgs):
-        print('openSetDrivenKey')
+        mel.eval('SetDrivenKeyOptions;')
 
     def openGraphEditor(self, *pArgs):
         print('openGraphEditor')
@@ -115,15 +122,22 @@ class UI:
 
     def checkZeroOut(self):
         # checkbox
-        check = cmds.checkBox('zeroOutCB', q=1, v=1)
-        return check
+        return cmds.checkBox('zeroOutCB', q=1, v=1)
+
+    def checkCurveName(self):
+        # textfield
+        return cmds.textField('splineNameInput', query=True, text=True)
 
     def addCurve(self, args):
+        # name
+        spline_name = self.checkCurveName()
+        Curves.setName(spline_name)
 
         # zero out
         check = self.checkZeroOut()
         Curves.setZeroOut(check)
 
+        # create shape
         if self.__current_menu_item is not None:
             if self.__current_menu_item == Constants.CUBE_CENTER_PIVOT:
                 Curves.cube()
@@ -135,3 +149,9 @@ class UI:
                 Curves.footControl()
             elif self.__current_menu_item == Constants.SPHERE_CONTROL:
                 Curves.sphere()
+            elif self.__current_menu_item == Constants.SQUARE_CONTROL:
+                Curves.square()
+            elif self.__current_menu_item == Constants.ARROW_180:
+                Curves.arrow180()
+            elif self.__current_menu_item == Constants.COG:
+                Curves.cog()

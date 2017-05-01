@@ -30,7 +30,9 @@ def getWindow(path):
     cmds.menuItem(p='patternCb', label='####')
 
     cmds.showWindow(rename_dialog)
-    cmds.window(rename_dialog, edit=True, tlc=(30, 735))
+
+    # window position
+    cmds.window(rename_dialog, edit=True, tlc=(150, 850))
 
 
 def changeAction(args):

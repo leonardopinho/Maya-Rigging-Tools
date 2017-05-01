@@ -32,16 +32,14 @@ def moveControl():
 def sphere():
     createSpline(splines.sphere, 1)
 
+def square():
+    createSpline(splines.square, 1)
 
-def setZeroOut(grp=False):
-    global z_out
-    z_out = grp
+def arrow180():
+    createSpline(splines.arrow_180, 3)
 
-
-def getZeroOut():
-    global z_out
-    return z_out
-
+def cog():
+    createSpline(splines.cog, 1)
 
 def getListOfCvPoints(selected_curve):
     """
@@ -94,11 +92,34 @@ def mergeSpline(list):
         cmds.parent(shapeNode, list[0], add=True, s=True)
         cmds.delete(list[x + 1])
 
+    # set name
+    if getName() != None:
+        cmds.rename(list[0], getName())
+        list[0] = getName()
+
     cmds.select(list[0])
 
+    # create zero out group
     if getZeroOut():
         name = list[0]
         grp_name = '{0}_Grp'.format(name)
         cmds.group(em=True, name=grp_name)
         cmds.parent(name, grp_name)
 
+
+def setZeroOut(grp=False):
+    global z_out
+    z_out = grp
+
+
+def getZeroOut():
+    global z_out
+    return z_out
+
+def setName(name = None):
+    global s_name
+    s_name = None if name == '' else name
+
+def getName():
+    global s_name
+    return s_name
