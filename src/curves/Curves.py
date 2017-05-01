@@ -97,12 +97,13 @@ def mergeSpline(list):
         cmds.parent(shapeNode, list[0], add=True, s=True)
         cmds.delete(list[x + 1])
 
+    cmds.select(list[0])
+
     # set name
     if getName() != None:
         ctrl_name = '{0}_Ctrl'.format(getName())
         cmds.rename(list[0], ctrl_name)
-
-    cmds.select(ctrl_name)
+        cmds.select(ctrl_name)
 
     # create zero out group
     if getZeroOut():

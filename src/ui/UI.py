@@ -28,7 +28,7 @@ class UI:
 
         # buttons
         cmds.button('bt_about', edit=1, command=partial(self.credits))
-        cmds.button('bt_add', label='Add', edit=1, command=partial(self.addCurve))
+        cmds.button('bt_add', label='Create', edit=1, command=partial(self.addCurve))
         cmds.button('bt_history', edit=1, command=partial(self.clearHistory, self))
         cmds.button('bt_freeze', edit=1, command=partial(self.freezeTransformation, self))
         cmds.button('bt_reset', edit=1, command=partial(self.resetTransformation, self))
@@ -43,7 +43,7 @@ class UI:
 
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
-        cmds.menuItem(p='curves_combobox', label='Select type')
+        cmds.menuItem(p='curves_combobox', label='')
         cmds.menuItem(p='curves_combobox', label=Constants.SQUARE_CONTROL)
         cmds.menuItem(p='curves_combobox', label=Constants.CUBE_CENTER_PIVOT)
         cmds.menuItem(p='curves_combobox', label=Constants.CUBE_BASE_PIVOT)
