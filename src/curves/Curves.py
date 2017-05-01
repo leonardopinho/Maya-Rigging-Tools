@@ -3,6 +3,7 @@ import maya.cmds as cmds
 
 reload(splines)
 
+
 def cube():
     createSpline(splines.cube, 1)
 
@@ -13,6 +14,22 @@ def cubeOnBase():
 
 def footControl():
     createSpline(splines.foot_spline, 3)
+
+
+def sphere():
+    createSpline(splines.sphere, 1)
+
+
+def square():
+    createSpline(splines.square, 1)
+
+
+def arrow180():
+    createSpline(splines.arrow_180, 3)
+
+
+def cog():
+    createSpline(splines.cog, 1)
 
 
 def moveControl():
@@ -29,24 +46,12 @@ def moveControl():
     mergeSpline(list)
 
 
-def sphere():
-    createSpline(splines.sphere, 1)
-
-def square():
-    createSpline(splines.square, 1)
-
-def arrow180():
-    createSpline(splines.arrow_180, 3)
-
-def cog():
-    createSpline(splines.cog, 1)
-
 def getListOfCvPoints(selected_curve):
     """
     getListOfCvPoints
     Return cvs positions (x, y, z)
-    :param selected_curve: name of selected curve
-    :return: list of points for selection
+    @param selected_curve: name of selected curve
+    @return: list of points for selection
     """
     curveCVs = cmds.ls('{0}.cv[:]'.format(selected_curve), fl=True)
     list = []
@@ -94,17 +99,16 @@ def mergeSpline(list):
 
     # set name
     if getName() != None:
-        cmds.rename(list[0], getName())
-        list[0] = getName()
+        ctrl_name = '{0}_Ctrl'.format(getName())
+        cmds.rename(list[0], ctrl_name)
 
-    cmds.select(list[0])
+    cmds.select(ctrl_name)
 
     # create zero out group
     if getZeroOut():
-        name = list[0]
-        grp_name = '{0}_Grp'.format(name)
+        grp_name = ctrl_name.replace('Ctrl', 'Grp')
         cmds.group(em=True, name=grp_name)
-        cmds.parent(name, grp_name)
+        cmds.parent(ctrl_name, grp_name)
 
 
 def setZeroOut(grp=False):
@@ -116,9 +120,11 @@ def getZeroOut():
     global z_out
     return z_out
 
-def setName(name = None):
+
+def setName(name=None):
     global s_name
     s_name = None if name == '' else name
+
 
 def getName():
     global s_name

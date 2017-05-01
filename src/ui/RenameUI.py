@@ -32,7 +32,7 @@ def getWindow(path):
     cmds.showWindow(rename_dialog)
 
     # window position
-    cmds.window(rename_dialog, edit=True, tlc=(150, 850))
+    cmds.window(rename_dialog, edit=True, tlc=(150, 1000))
 
 
 def changeAction(args):

@@ -56,7 +56,7 @@ class UI:
         cmds.showWindow(dialog)
 
         # window position
-        cmds.window(dialog, edit=True, tlc=(150, 1200))
+        cmds.window(dialog, edit=True, tlc=(150, 1000))
 
     def changeMenuItem(self, item):
         self.__current_menu_item = item
@@ -86,22 +86,7 @@ class UI:
         Rename.getWindow(self.__path)
 
     def openOutliner(self, *pArgs):
-        try:
-            # Toggle outliner (Maya 2017)
-            mel.eval('ToggleOutliner;')
-        except:
-            # float panel (other Maya version)
-            self.__outliner = cmds.window(title='Outliner', widthHeight=(300, 500))
-            cmds.frameLayout(labelVisible=False)
-            panel = cmds.outlinerPanel()
-            outliner = cmds.outlinerPanel(panel, query=True, outlinerEditor=True)
-            cmds.outlinerEditor(outliner, edit=True, mainListConnection='worldList', selectionConnection='modelList',
-                                showShapes=False, showAttributes=False, showConnected=False, showAnimCurvesOnly=False,
-                                autoExpand=False, showDagOnly=True, ignoreDagHierarchy=False, expandConnections=False,
-                                showCompounds=True, showNumericAttrsOnly=False, highlightActive=True,
-                                autoSelectNewObjects=False, doNotSelectNewObjects=False, transmitFilters=False,
-                                showSetMembers=True, setFilter='defaultSetFilter')
-            cmds.showWindow()
+        mel.eval('ToggleOutliner;')
 
     def openNodeEditor(self, *pArgs):
         mel.eval('NodeEditorWindow;')
