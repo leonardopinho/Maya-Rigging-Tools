@@ -3,17 +3,6 @@ import maya.cmds as cmds
 
 reload(splines)
 
-CUBE_CENTER_PIVOT = 'Cube (center pivot)'
-CUBE_BASE_PIVOT = 'Cube (base pivot)'
-MOVE_CONTROL = 'Move control'
-FOOT_CONTROL = 'Foot control'
-SPHERE_CONTROL = 'Sphere control'
-
-
-def sphere():
-    createSpline(splines.sphere, 1)
-
-
 def cube():
     createSpline(splines.cube, 1)
 
@@ -38,6 +27,21 @@ def moveControl():
     list.append(cmds.curve(p=splines.move_spline[7], per=False, d=1, k=[0, 1, 2, 3, 4, 5, 6]))
     list.append(cmds.curve(p=splines.move_spline[8], per=False, d=1, k=[0, 1]))
     mergeSpline(list)
+
+
+def sphere():
+    createSpline(splines.sphere, 1)
+
+
+def setZeroOut(grp=False):
+    global z_out
+    z_out = grp
+
+
+def getZeroOut():
+    global z_out
+    return z_out
+
 
 def getListOfCvPoints(selected_curve):
     """
@@ -89,4 +93,12 @@ def mergeSpline(list):
         shapeNode = cmds.listRelatives(list[x + 1], shapes=True)
         cmds.parent(shapeNode, list[0], add=True, s=True)
         cmds.delete(list[x + 1])
+
     cmds.select(list[0])
+
+    if getZeroOut():
+        name = list[0]
+        grp_name = '{0}_Grp'.format(name)
+        cmds.group(em=True, name=grp_name)
+        cmds.parent(name, grp_name)
+

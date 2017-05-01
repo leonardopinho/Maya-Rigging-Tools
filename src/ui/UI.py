@@ -8,6 +8,7 @@ import webbrowser
 
 reload(Curves)
 
+
 class UI:
     __path = None
     __current_menu_item = None
@@ -41,11 +42,11 @@ class UI:
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
         cmds.menuItem(p='curves_combobox', label='Select type')
-        cmds.menuItem(p='curves_combobox', label=Curves.CUBE_CENTER_PIVOT)
-        cmds.menuItem(p='curves_combobox', label=Curves.CUBE_BASE_PIVOT)
-        cmds.menuItem(p='curves_combobox', label=Curves.MOVE_CONTROL)
-        cmds.menuItem(p='curves_combobox', label=Curves.FOOT_CONTROL)
-        cmds.menuItem(p='curves_combobox', label=Curves.SPHERE_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Constants.CUBE_CENTER_PIVOT)
+        cmds.menuItem(p='curves_combobox', label=Constants.CUBE_BASE_PIVOT)
+        cmds.menuItem(p='curves_combobox', label=Constants.MOVE_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Constants.FOOT_CONTROL)
+        cmds.menuItem(p='curves_combobox', label=Constants.SPHERE_CONTROL)
 
         cmds.showWindow(dialog)
 
@@ -99,15 +100,25 @@ class UI:
         res = Curves.getListOfCvPoints(selecteds_curve[0])
         print(res)
 
+    def checkZeroOut(self):
+        # checkbox
+        check = cmds.checkBox('zeroOutCB', q=1, v=1)
+        return check
+
     def addCurve(self, args):
+
+        # zero out
+        check = self.checkZeroOut()
+        Curves.setZeroOut(check)
+
         if self.__current_menu_item is not None:
-            if self.__current_menu_item == Curves.CUBE_CENTER_PIVOT:
+            if self.__current_menu_item == Constants.CUBE_CENTER_PIVOT:
                 Curves.cube()
-            elif self.__current_menu_item == Curves.CUBE_BASE_PIVOT:
+            elif self.__current_menu_item == Constants.CUBE_BASE_PIVOT:
                 Curves.cubeOnBase()
-            elif self.__current_menu_item == Curves.MOVE_CONTROL:
+            elif self.__current_menu_item == Constants.MOVE_CONTROL:
                 Curves.moveControl()
-            elif self.__current_menu_item == Curves.FOOT_CONTROL:
+            elif self.__current_menu_item == Constants.FOOT_CONTROL:
                 Curves.footControl()
-            elif self.__current_menu_item == Curves.SPHERE_CONTROL:
+            elif self.__current_menu_item == Constants.SPHERE_CONTROL:
                 Curves.sphere()
