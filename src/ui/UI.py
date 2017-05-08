@@ -43,7 +43,7 @@ class UI:
 
         # combobox
         cmds.optionMenu('curves_combobox', edit=1, changeCommand=partial(self.changeMenuItem))
-        cmds.menuItem(p='curves_combobox', label='Select curve type')
+        cmds.menuItem(p='curves_combobox', label='')
         cmds.menuItem(p='curves_combobox', label=Constants.SQUARE_CONTROL)
         cmds.menuItem(p='curves_combobox', label=Constants.CUBE_CENTER_PIVOT)
         cmds.menuItem(p='curves_combobox', label=Constants.CUBE_BASE_PIVOT)
@@ -79,7 +79,7 @@ class UI:
         print('resetTransformation')
 
     def centerPivot(self, *pArgs):
-        print('centerPivot')
+        mel.eval('CenterPivot;')
 
     def renameFiles(self, *pArgs):
         # rename ui

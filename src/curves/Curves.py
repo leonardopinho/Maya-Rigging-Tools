@@ -98,6 +98,7 @@ def mergeSpline(list):
         cmds.delete(list[x + 1])
 
     cmds.select(list[0])
+    ctrl_name = cmds.ls(selection=True)[0]
 
     # set name
     if getName() != None:
@@ -108,6 +109,7 @@ def mergeSpline(list):
     # create zero out group
     if getZeroOut():
         grp_name = ctrl_name.replace('Ctrl', 'Grp')
+
         cmds.group(em=True, name=grp_name)
         cmds.parent(ctrl_name, grp_name)
 
