@@ -50,8 +50,8 @@ def getListOfCvPoints(selected_curve):
     """
     getListOfCvPoints
     Return cvs positions (x, y, z)
-    :param selected_curve: name of selected curve
-    :return: list of points for selection
+    @param selected_curve: name of selected curve
+    @return: list of points for selection
     """
     curveCVs = cmds.ls('{0}.cv[:]'.format(selected_curve), fl=True)
     list = []
@@ -97,19 +97,19 @@ def mergeSpline(list):
         cmds.parent(shapeNode, list[0], add=True, s=True)
         cmds.delete(list[x + 1])
 
+    cmds.select(list[0])
+
     # set name
     if getName() != None:
-        cmds.rename(list[0], getName())
-        list[0] = getName()
-
-    cmds.select(list[0])
+        ctrl_name = '{0}_Ctrl'.format(getName())
+        cmds.rename(list[0], ctrl_name)
+        cmds.select(ctrl_name)
 
     # create zero out group
     if getZeroOut():
-        name = list[0]
-        grp_name = '{0}_Grp'.format(name)
+        grp_name = ctrl_name.replace('Ctrl', 'Grp')
         cmds.group(em=True, name=grp_name)
-        cmds.parent(name, grp_name)
+        cmds.parent(ctrl_name, grp_name)
 
 
 def setZeroOut(grp=False):
