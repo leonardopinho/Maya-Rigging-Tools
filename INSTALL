@@ -1,0 +1,6 @@
+import sys
+sys.path.append("path")
+
+import Main as mrt
+reload(mrt)
+mrt.init()

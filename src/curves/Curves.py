@@ -3,6 +3,7 @@ import maya.cmds as cmds
 
 reload(splines)
 
+
 def cube():
     createSpline(splines.cube, 1)
 
@@ -13,6 +14,22 @@ def cubeOnBase():
 
 def footControl():
     createSpline(splines.foot_spline, 3)
+
+
+def sphere():
+    createSpline(splines.sphere, 1)
+
+
+def square():
+    createSpline(splines.square, 1)
+
+
+def arrow180():
+    createSpline(splines.arrow_180, 3)
+
+
+def cog():
+    createSpline(splines.cog, 1)
 
 
 def moveControl():
@@ -28,18 +45,6 @@ def moveControl():
     list.append(cmds.curve(p=splines.move_spline[8], per=False, d=1, k=[0, 1]))
     mergeSpline(list)
 
-
-def sphere():
-    createSpline(splines.sphere, 1)
-
-def square():
-    createSpline(splines.square, 1)
-
-def arrow180():
-    createSpline(splines.arrow_180, 3)
-
-def cog():
-    createSpline(splines.cog, 1)
 
 def getListOfCvPoints(selected_curve):
     """
@@ -116,9 +121,11 @@ def getZeroOut():
     global z_out
     return z_out
 
-def setName(name = None):
+
+def setName(name=None):
     global s_name
     s_name = None if name == '' else name
+
 
 def getName():
     global s_name
