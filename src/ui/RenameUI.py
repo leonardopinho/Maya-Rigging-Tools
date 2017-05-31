@@ -1,7 +1,7 @@
 import maya.cmds as cmds
 from src.Extras.Constants import Constants
 from src.Utils.Utils import Utils
-from src.UI.UIBase import UIBase
+from src.ui.UIBase import UIBase
 
 
 class RenameUI(UIBase):

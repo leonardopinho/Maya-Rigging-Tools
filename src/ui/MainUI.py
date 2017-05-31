@@ -1,10 +1,10 @@
-from src.UI.UIBase import UIBase
+from src.ui.UIBase import UIBase
 import maya.cmds as cmds
 import maya.mel as mel
 
 import src.Scripts.Curves.Curves as Curves
 from src.Extras.Constants import Constants
-from src.UI.RenameUI import RenameUI
+from src.ui.RenameUI import RenameUI
 from src.Utils.Utils import Utils
 
 
@@ -95,7 +95,7 @@ class MainUI(UIBase):
         mel.eval('CenterPivot;')
 
     def renameFiles(self, args):
-        # rename UI
+        # rename ui
         ui = RenameUI(self.__path)
         ui.open()
 
