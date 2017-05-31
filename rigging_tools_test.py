@@ -1,6 +1,7 @@
 import unittest
-import src.constants.Constants as Constants
-import src.utils.Utils as Utils
+
+from src.Extras.Constants import Constants
+from src.Utils.Utils import Utils
 
 
 class UtilsTest(unittest.TestCase):

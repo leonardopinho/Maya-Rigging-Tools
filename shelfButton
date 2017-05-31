@@ -1,0 +1,9 @@
+import sys
+
+path = "path here"
+
+if path not in sys.path:
+    sys.path.append(path)
+
+import main as mrt
+reload(mrt)

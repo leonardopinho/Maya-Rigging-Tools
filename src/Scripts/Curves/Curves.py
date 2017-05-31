@@ -1,4 +1,4 @@
-import splinesList as splines
+import SplinesList as splines
 import maya.cmds as cmds
 
 reload(splines)
