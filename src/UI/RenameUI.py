@@ -1,7 +1,7 @@
 import maya.cmds as cmds
 from src.Extras.Constants import Constants
 from src.Utils.Utils import Utils
-from src.ui.UIBase import UIBase
+from src.UI.UIBase import UIBase
 
 
 class RenameUI(UIBase):
@@ -34,8 +34,8 @@ class RenameUI(UIBase):
         if cmds.window(self.__win_name, exists=True):
             cmds.deleteUI(self.__win_name, window=True)
 
-        # url of ui file
-        url = '%s/%s' % (self.__path, 'ui/rename.ui')
+        # url of UI file
+        url = '%s/%s' % (self.__path, 'UI/rename.UI')
         self.__dialog = cmds.loadUI(f=url)
 
         # radio button

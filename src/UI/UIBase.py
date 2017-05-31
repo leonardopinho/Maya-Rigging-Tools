@@ -3,7 +3,7 @@ from abc import ABCMeta, abstractmethod
 
 class UIBase():
     '''
-    Abstract class for ui
+    Abstract class for UI
     '''
     __metaclass__ = ABCMeta
 
