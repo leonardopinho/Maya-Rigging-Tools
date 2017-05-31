@@ -12,7 +12,7 @@ path = os.path.dirname(os.path.abspath(filename))
 if path not in sys.path:
     sys.path.append(path)
 
-from src.UI.MainUI import MainUI
+from src.ui.MainUI import MainUI
 
 ui = MainUI(path)
 ui.open()

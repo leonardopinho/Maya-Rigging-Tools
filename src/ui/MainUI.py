@@ -1,11 +1,11 @@
-from src.UI.UIBase import UIBase
+from src.ui.UIBase import UIBase
 import maya.cmds as cmds
 import maya.mel as mel
 
-import src.Scripts.Curves.Curves as Curves
-from src.Extras.Constants import Constants
-from src.UI.RenameUI import RenameUI
-from src.Utils.Utils import Utils
+import src.scripts.Curves.Curves as Curves
+from src.extras.Constants import Constants
+from src.ui.RenameUI import RenameUI
+from src.utils.Utils import Utils
 
 
 class MainUI(UIBase):
@@ -31,8 +31,8 @@ class MainUI(UIBase):
         if cmds.window(self.__win_name, exists=True):
             cmds.deleteUI(self.__win_name, window=True)
 
-        # url of UI file
-        url = '%s/%s' % (self.__path, 'UI/main.UI')
+        # url of ui file
+        url = '%s/%s' % (self.__path, 'ui/main.ui')
         self.__dialog = cmds.loadUI(f=url)
 
         # buttons
@@ -95,7 +95,7 @@ class MainUI(UIBase):
         mel.eval('CenterPivot;')
 
     def renameFiles(self, args):
-        # rename UI
+        # rename ui
         ui = RenameUI(self.__path)
         ui.open()
 
