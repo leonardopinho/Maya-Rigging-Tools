@@ -2,7 +2,7 @@ from src.ui.UIBase import UIBase
 import maya.cmds as cmds
 import maya.mel as mel
 
-import src.scripts.Curves.Curves as Curves
+import src.scripts.curves.Curves as Curves
 from src.extras.Constants import Constants
 from src.ui.RenameUI import RenameUI
 from src.utils.Utils import Utils
