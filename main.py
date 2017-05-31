@@ -6,13 +6,6 @@
 """
 import inspect, sys, os
 
-# clear cache
-#if 'src.UI.MainUI' in sys.modules:
-del sys.modules['src.UI.MainUI']
-del sys.modules['src.UI.RenameUI']
-del sys.modules['src.Utils.Utils']
-del sys.modules['src.Extras.Constants']
-
 filename = inspect.getframeinfo(inspect.currentframe()).filename
 path = os.path.dirname(os.path.abspath(filename))
 
