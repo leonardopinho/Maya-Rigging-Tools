@@ -2,6 +2,7 @@ try:
     import socket
     import maya.OpenMaya as om
     import webbrowser
+    from pymel import versions
 except Exception as e:
     print e
 
@@ -86,22 +87,25 @@ class Utils():
     def getHostname():
         """
         Return hostname
-        :return str:
+        :return: str
         """
-        hostname = socket.gethostname()
-        return hostname
+        return socket.gethostname()
+
+    @staticmethod
+    def getMayaVersion():
+        return ('%s' % (versions.current())[0:4])
 
     @staticmethod
     def log(msg):
-        if type(msg) == str:
+        if isinstance(msg, str):
             om.MGlobal.displayInfo(msg)
 
     @staticmethod
     def warn(msg):
-        if type(msg) == str:
+        if isinstance(msg, str):
             om.MGlobal.displayWarning(msg)
 
     @staticmethod
     def error(msg):
-        if type(msg) == str:
+        if isinstance(msg, str):
             om.MGlobal.displayError(msg)

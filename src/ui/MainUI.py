@@ -2,7 +2,7 @@ from src.ui.UIBase import UIBase
 import maya.cmds as cmds
 import maya.mel as mel
 
-import src.scripts.curves.Curves as Curves
+from src.scripts.curves.Curves import Curves
 from src.extras.Constants import Constants
 from src.ui.RenameUI import RenameUI
 from src.utils.Utils import Utils
@@ -62,6 +62,9 @@ class MainUI(UIBase):
         cmds.menuItem(p='curves_combobox', label=Constants.ARROW_180)
         # cmds.menuItem(p='curves_combobox', label=Constants.COG)
 
+        # instance
+        self.curves = Curves()
+
     def open(self):
         cmds.showWindow(self.__dialog)
         cmds.window(self.__dialog, edit=True, tlc=(self.__x, self.__y))
@@ -116,7 +119,7 @@ class MainUI(UIBase):
 
     def getListOfCvPoints(self, args):
         selecteds_curve = cmds.ls(selection=True)
-        res = Curves.getListOfCvPoints(selecteds_curve[0])
+        res = self.curves.getListOfCvPoints(selecteds_curve[0])
         print(res)
 
     def checkZeroOut(self):
@@ -130,27 +133,27 @@ class MainUI(UIBase):
     def addCurve(self, args):
         # name
         spline_name = self.checkCurveName()
-        Curves.setName(spline_name)
+        self.curves.name = spline_name
 
         # zero out
         check = self.checkZeroOut()
-        Curves.setZeroOut(check)
+        self.curves.zeroOut = check
 
         # create shape
         if self.__current_menu_item is not None:
             if self.__current_menu_item == Constants.CUBE_CENTER_PIVOT:
-                Curves.cube()
+                self.curves.cube()
             elif self.__current_menu_item == Constants.CUBE_BASE_PIVOT:
-                Curves.cubeOnBase()
+                self.curves.cubeOnBase()
             elif self.__current_menu_item == Constants.MOVE_CONTROL:
-                Curves.moveControl()
+                self.curves.moveControl()
             elif self.__current_menu_item == Constants.FOOT_CONTROL:
-                Curves.footControl()
+                self.curves.footControl()
             elif self.__current_menu_item == Constants.SPHERE_CONTROL:
-                Curves.sphere()
+                self.curves.sphere()
             elif self.__current_menu_item == Constants.SQUARE_CONTROL:
-                Curves.square()
+                self.curves.square()
             elif self.__current_menu_item == Constants.ARROW_180:
-                Curves.arrow180()
+                self.curves.arrow180()
             elif self.__current_menu_item == Constants.COG:
-                Curves.cog()
+                self.curves.cog()
