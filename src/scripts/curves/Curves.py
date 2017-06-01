@@ -7,6 +7,9 @@ class Curves(object):
     __name = None
 
     def __init__(self):
+        '''
+        Class for creating complex spline curves
+        '''
         pass
 
     def cube(self):

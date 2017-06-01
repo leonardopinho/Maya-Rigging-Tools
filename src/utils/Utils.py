@@ -11,7 +11,7 @@ class Utils():
     @staticmethod
     def getUrl(url):
         # open browser
-        if url != None:
+        if isinstance(url, str):
             webbrowser.open(url)
 
     @staticmethod

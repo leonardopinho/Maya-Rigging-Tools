@@ -6,11 +6,6 @@
 """
 import inspect, sys, os
 
-# clear cache
-#if 'src.UI.MainUI' in sys.modules:
-#del sys.modules['src.UI.MainUI']
-#del sys.modules['src.scripts.curves.Curves']
-
 filename = inspect.getframeinfo(inspect.currentframe()).filename
 path = os.path.dirname(os.path.abspath(filename))
 

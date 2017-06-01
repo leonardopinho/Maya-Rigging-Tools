@@ -62,7 +62,7 @@ class MainUI(UIBase):
         cmds.menuItem(p='curves_combobox', label=Constants.ARROW_180)
         # cmds.menuItem(p='curves_combobox', label=Constants.COG)
 
-        # instance
+        # instance of Curves
         self.curves = Curves()
 
     def open(self):
