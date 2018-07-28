@@ -1,6 +1,6 @@
 import sys
 
-path = "path here"
+path = "C:\Users\hp\Documents\maya\2017\scripts\Maya-Rigging-Tools"
 
 if path not in sys.path:
     sys.path.append(path)
