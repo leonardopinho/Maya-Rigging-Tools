@@ -1,4 +1,7 @@
 import unittest
+import logging
+
+logging.basicConfig(filename="log/test.log", level=logging.DEBUG)
 
 from src.extras.Constants import Constants
 from src.utils.Utils import Utils
@@ -12,6 +15,7 @@ class UtilsTest(unittest.TestCase):
         suffix = '_Mesh'
         new_list = Utils.renameListOfNames(list, new_name, prefix, suffix)
         self.assertEquals('L_cube_1_Mesh', new_list[0])
+        logging.debug("test_rename_list_of_object: {} (${})".format('L_cube_1_Mesh', new_list[0]))
 
     def test_rename_by_pattern(self):
         list = ['obj1', 'obj2', 'obj3']
