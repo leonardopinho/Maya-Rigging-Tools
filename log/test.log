@@ -1,1 +1,1 @@
-DEBUG:root:test_rename_list_of_object: L_cube_1_Mesh ($L_cube_1_Mesh)
+29-07-2018:11:51:13,999 DEBUG   [rt_test.py:25] test_rename_list_of_object: L_cube_1_Mesh ($L_cube_1_Mesh) - True
