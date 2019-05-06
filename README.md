@@ -1,3 +1,6 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/og5w76kstgewf2fx/branch/master?svg=true)](https://ci.appveyor.com/project/leonardopinho/maya-rigging-tools/branch/master)
+
+
 Maya-Rigging-Tools (Work in progress)
 =========================
 
